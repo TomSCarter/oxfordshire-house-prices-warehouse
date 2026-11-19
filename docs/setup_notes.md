@@ -1,4 +1,5 @@
 ## Setting up BigQuery-PowerBi connection
 - After setting up my BigQuery account the organisation policy blocked key creation (for the powerbi service account). Had to give myself rights to change the policy
+    - Overrode iam.disableServiceAccountKeyCreation at the project level only (IAM & Admin → Organisation policies), after granting myself Organisation Policy Administrator
 - When setting up the connection in PowerBi desktop, the json key had to be formatted into one line, otherwise errored
 - When creating the service account I gave it the roles: Data viewer, Job user and Read session user
