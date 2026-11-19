@@ -1,0 +1,21 @@
+# Decisions
+
+- Chose to use BigQuery rather than DuckDB
+    - I want cloud experience for my CV
+    - Employers mostly run cloud warehouses, and my benchmark ads named BigQuery or Snowflake, not DuckDB.
+    - Chose BigQuery over Snowflake as free tier and charging model work better for training, and a few of the job adverts I looked at this week (as a benchmark) mentioned it. I gather its not too hard to transfer skills between providers
+    - I enabled billing but set a £5 alert, to get full access to the features
+- Power BI signs in with a service account key
+    - Its the professional way to do it, but the default organisation policy on BigQuery blocked the generation of a key. I had give myself privileges to override it at a project level.
+    - On the service account, I gave Power BI three roles (minimum needed, all read-only)
+    - The cost is the security risk on the key as a long-lived secret that could give unintentional access
+    - Alternative: I could have just allowed Power BI to sign in with my Google account, but that would have allowed it project owner level access
+- The fact table's grain
+    - one row per sale of a property (all sales)
+    - Sales without a certificate are kept as still useful in analyses that doesnt need the EPC data
+        - match them to an unknown certificate row, so they are filtered in rows needing certificate info
+- Property key
+    - No unique key for each property, but there is for each sale (unique_id)
+        - Could use address set used in matching?
+    - EPC all have unique certificate numbers with UPRN for each property (but some few uprn are null)
+    - TO BE DECIDED, perhaps no property key is needed for now
