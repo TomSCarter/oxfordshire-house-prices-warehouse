@@ -5,5 +5,4 @@ data/
 **/.pbi/cache.abf
 *.pbix
 *.env
-*.json
 .venv/
