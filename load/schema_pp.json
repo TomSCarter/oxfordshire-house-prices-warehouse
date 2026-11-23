@@ -1,0 +1,82 @@
+[
+  {
+    "name": "unique_id",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "price_paid",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "deed_date",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "postcode",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "property_type",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "new_build",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "estate_type",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "saon",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "paon",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "street",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "locality",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "town",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "district",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "county",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "transaction_category",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "linked_data_uri",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  }
+]

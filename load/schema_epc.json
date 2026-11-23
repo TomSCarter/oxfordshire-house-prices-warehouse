@@ -1,0 +1,467 @@
+[
+  {
+    "name": "certificate_number",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "address1",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "address2",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "address3",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "postcode",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "posttown",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "address",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "constituency",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "constituency_label",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "local_authority",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "local_authority_label",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "built_form",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "co2_emiss_curr_per_floor_area",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "co2_emissions_current",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "co2_emissions_potential",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "construction_age_band",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "current_energy_efficiency",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "current_energy_rating",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "energy_consumption_current",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "energy_consumption_potential",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "energy_tariff",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "environment_impact_current",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "environment_impact_potential",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "extension_count",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "fixed_lighting_outlets_count",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "flat_storey_count",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "flat_top_storey",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "floor_description",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "floor_energy_eff",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "floor_height",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "floor_level",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "glazed_area",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "glazed_type",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "heat_loss_corridor",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "heating_cost_current",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "heating_cost_potential",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "hot_water_cost_current",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "hot_water_cost_potential",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "hot_water_energy_eff",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "hot_water_env_eff",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "hotwater_description",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "inspection_date",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "lighting_cost_current",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "lighting_cost_potential",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "lighting_description",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "lighting_energy_eff",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "lighting_env_eff",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "lodgement_date",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "lodgement_datetime",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "low_energy_lighting",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "low_energy_fixed_lighting_outlets_count",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "main_fuel",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "mainheat_description",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "mainheat_energy_eff",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "mainheat_env_eff",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "mainheatc_energy_eff",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "mainheatc_env_eff",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "mainheatcont_description",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "main_heating_controls",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "mains_gas_flag",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "mechanical_ventilation",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "multi_glaze_proportion",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "number_habitable_rooms",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "number_heated_rooms",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "number_open_fireplaces",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "photo_supply",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "potential_energy_efficiency",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "potential_energy_rating",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "property_type",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "report_type",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "roof_description",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "roof_energy_eff",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "roof_env_eff",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "secondheat_description",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "sheating_energy_eff",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "sheating_env_eff",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "solar_water_heating_flag",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "tenure",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "total_floor_area",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "transaction_type",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "unheated_corridor_length",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "walls_description",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "walls_energy_eff",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "walls_env_eff",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "wind_turbine_count",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "windows_description",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "windows_energy_eff",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "windows_env_eff",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "floor_env_eff",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "region",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "country",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "uprn",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "uprn_source",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  }
+]
