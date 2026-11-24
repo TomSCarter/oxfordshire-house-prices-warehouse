@@ -4,11 +4,13 @@
     - I want cloud experience for my CV
     - Employers mostly run cloud warehouses, and my benchmark ads named BigQuery (or Snowflake) not DuckDB. Chose BigQuery over Snowflake as free tier and charging model work better for training, it was also mentioned in several of the ads. I gather its not too hard to transfer skills between providers
     - I enabled billing but set a £5 alert, to get full access to the features
+    
 - Power BI signs in with a service account key
     - Its the professional way to do it, but the default organisation policy on BigQuery blocked the generation of a key. I had to give myself privileges to override it at a project level.
     - On the service account, I gave Power BI three roles (minimum needed, all read-only)
     - The cost is the security risk on the key as a long-lived secret that could give unintentional access
     - Alternative: I could have just allowed Power BI to sign in with my Google account, but that would have allowed it project owner level access
+
 - The fact table's grain
     - one row per sale of a property (all sales)
     - Measure: price paid
@@ -24,3 +26,6 @@
         - But none of my current analysis needs this, no property key for now
     - EPC all have unique certificate numbers with UPRN for each property (but some few uprn are null)
         - dim_certificate to be keyed on certificate_number, holding the properties attributes as of each sale
+
+- House number/name, flat, street and locality are left out of staging. Postcode, town, district and county are kept for geography.
+    - Address data is under Royal Mail/OS terms (non-commercial use only) and isn't needed after matching, so it stays in raw only.
