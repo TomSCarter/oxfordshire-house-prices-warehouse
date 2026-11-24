@@ -31,7 +31,8 @@ oxfordshire-house-prices-warehouse/
 │   ├── decisions.md        
 │   ├── setup_notes.md      
 │   └── reconciliation.md 
-├── load/                   
+├── load/
+├── seeds/                   
 ├── sql/
 │   ├── profiling/          
 │   ├── staging/            
