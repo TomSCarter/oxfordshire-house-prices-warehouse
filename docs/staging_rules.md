@@ -29,7 +29,7 @@
             - Single years (YYYY): Put into bands
             - Overlapping recent bands ("2007 onwards", "Post-2006", "2007-2011", "2012 onwards", "2012-2021", "2022 onwards"): Collapse into 2007 onwards. Compromise as lose detail
             - Errors (201, 2104, null): all to NULL
-            - Implement by using a rule for single years into range, and a csv lookup table for the other conversions
+            - Implement by using a rule for single years into range, and a csv lookup table for the other conversions. Apply csv first to catch 2104 (into null)
     - Checking for impossible values:
 
         col_name	min	max	zero_count
