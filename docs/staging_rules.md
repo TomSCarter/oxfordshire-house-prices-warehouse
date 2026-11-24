@@ -1,10 +1,32 @@
 # Staging rules
 
+- missing values
+    - Use NULLIF(TRIM(col) = '') to change empty (or whitespace) strings to NULLs on all text columns
 - deed_date, inspection_date and lodgement_date are in the format YYYY-MM-DD (10 characters always)
 - Price paid table datatypes
     - deed_date parsed as DATE (YYYY-MM-DD)
     - price_paid as INT64
-- EPC table datatypes
-    - total_floor_area, current_energy_efficiency as INT64 
-    - heating_cost_current, energy_consumption_current as FLOAT64. Contain a handful of decimals, some are likely errors
-    - floor_height as FLOAT64. Always decimal
+- EPC table 
+    - datatypes
+        - total_floor_area, current_energy_efficiency as INT64 
+        - heating_cost_current, energy_consumption_current as FLOAT64. Contain a handful of decimals, some are likely errors
+        - floor_height as FLOAT64. Always decimal
+    - categories
+        - tenure
+            - lowercase everything
+            - unknown/Unknown to NULL
+        - transaction_type
+            - lowercase everything
+            - not recorded to NULL
+            - Note: Contains differing levels of detail (Rental vs Rental (social) or Rental (private))
+        - built_form
+            - Not Recorded to NULL
+        - current_energy_rating
+            - No rule needed
+        - construction_age_band
+            - Strip prefixes: ('England and Wales: 1950-1966' to '1950-1966')
+            - Merge synonyms: 'Pre-1900' = 'before 1900'
+            - Single years (YYYY): Put into bands
+            - Overlapping recent bands ("2007 onwards", "Post-2006", "2007-2011", "2012 onwards", "2012-2021", "2022 onwards"): Collapse into 2007 onwards. Compromise as lose detail
+            - Errors (201, 2104, null): all to NULL
+            - Implement by using a rule for single years into range, and a csv lookup table for the other conversions 
