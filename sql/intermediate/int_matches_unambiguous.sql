@@ -7,7 +7,7 @@ WITH source AS(
   FROM `intermediate.int_match_pairs`
 ),
 
-grouped AS(
+unambiguous_ids AS(
   SELECT
     unique_id,
   FROM
@@ -19,4 +19,4 @@ grouped AS(
 SELECT *
 FROM
   source
-WHERE unique_id IN (SELECT * FROM grouped)
+WHERE unique_id IN (SELECT * FROM unambiguous_ids)
