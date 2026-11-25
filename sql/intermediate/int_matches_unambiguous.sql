@@ -19,4 +19,4 @@ unambiguous_ids AS(
 SELECT *
 FROM
   source
-WHERE unique_id IN (SELECT * FROM unambiguous_ids)
+WHERE unique_id IN (SELECT * FROM unambiguous_ids);
