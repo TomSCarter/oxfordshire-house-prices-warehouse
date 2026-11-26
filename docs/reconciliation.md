@@ -1,5 +1,64 @@
-# Report from Land Registry pipeline generating v3 processed data 
- - match_table at row 14
+# Reconciliation: pandas pipeline vs BigQuery SQL
+
+The SQL warehouse rebuilds the pipeline's downstream steps (everything after
+address matching) and reproduces its row counts at every step.
+
+Source of pipeline figures: the Land Registry cleaning pipeline's run report for
+the v3 processed data (appendix below).
+
+## Row counts by step
+
+| Pipeline step | SQL model | Pipeline | SQL | Match |
+|---|---|---|---|---|
+| `load.read_price_paid` | `raw.price_paid` / `stg_price_paid` | 135,557 | 135,557 | ✓ |
+| `load.read_epc` | `raw.epc` / `stg_epc` | 338,323 | 338,323 | ✓ |
+| `load.filter_local_authorities` | not rebuilt (see differences) | 338,318 | — | — |
+| Address matching (`merge_on_postcode`, `filter_subset_matches`) | stays in Python; exported as `raw.match_table` | 171,240 | 171,240 | ✓ |
+| Joining sale and certificate attributes | `int_match_pairs` | — | 171,240 | ✓ (no fan-out) |
+| `match.drop_ambiguous_matches` | `int_matches_unambiguous` | 164,823 rows / 118,222 sales | 164,823 / 118,222 | ✓ |
+| `match.select_presale_epc` | `int_sales_presale_epc` | 114,490 | 114,490 | ✓ |
+| `clean.apply_exclusions` | `int_sales_filtered` | 114,424 | 114,424 | ✓ |
+
+## Exclusions breakdown (114,490 → 114,424, 66 sales)
+
+| Rule | Sales excluded |
+|---|---|
+| Floor area ≤ 9 m² or null | 60 |
+| Floor area > 2,000 m² with ≤ 7 habitable rooms (or rooms missing) | 3 |
+| Construction age band under 4 characters (raw value) | 3 |
+| Efficiency > 110 and consumption > 200 for flats/maisonettes | 0 |
+| **Total** | **66** |
+
+## Deliberate differences from the pipeline
+
+- **Local authority filter not rebuilt.** The pipeline removed 5 EPC records
+  outside the five Oxfordshire authorities (338,323 → 338,318) before matching.
+  The match table was produced after that filter, so it doesn't affect the
+  counts above. `stg_epc` still contains those 5 records; filter them if
+  `dim_certificate` is ever built from all certificates.
+- **Tie-break.** `int_sales_presale_epc` adds `certificate_number` as a third
+  sort key after inspection-to-sale gap and lodgement date, so exact ties are
+  settled the same way on every run. This can't change the count.
+- **Floor height imputation not reproduced.** The pipeline fills 2,516 missing
+  floor heights with the median (`clean.impute_floor_height`). The warehouse
+  leaves them NULL; imputation is an analysis choice, and no current output
+  uses floor height.
+- **Extra quality flags.** `is_suspect_inspection_date` (before 1 Aug 2007) and
+  `is_suspect_floor_height` (> 20 m) are added in staging. Flags only; no values
+  or rows are changed.
+- **Construction age band harmonised** into 11 bands via
+  `reference.construction_age_band_map` and a build-year rule. The raw value is
+  kept as `construction_age_band_raw`, so the exclusion rule above matches the
+  pipeline.
+- **Address fields dropped** from staging onwards (data minimisation).
+
+## Not yet reconciled
+
+Column-level null counts after `clean.nullify_invalid_values` (pipeline: floor
+height 2,575, tenure 35,004, heated rooms 32,426, built form 2,507). To compare
+against the marts once they're built.
+
+## Appendix: pipeline run report (v3)
  
 ```
                                step     rows  unique_sales  col_count  expired  floor_height_nulls  tenure_nulls  number_heated_rooms_nulls  built_form_nulls  imputed_count
@@ -29,3 +88,5 @@
 23        clean.impute_floor_height   114424           NaN        NaN      NaN                 NaN           NaN                        NaN               NaN         2516.0
 24                save.save_parquet   114424           NaN        NaN      NaN                 NaN           NaN                        NaN               NaN            NaN
 ```
+
+# 
