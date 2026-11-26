@@ -1,16 +1,23 @@
 # oxfordshire-house-prices-warehouse
-BigQuery warehouse for Oxfordshire house sales: HM Land Registry Price Paid
-data linked to EPC certificates and modelled in SQL for Power BI.
+BigQuery warehouse for Oxfordshire house sales: HM Land Registry Price Paid data linked to EPC certificates and modelled in SQL for Power BI.
 
-**Status:** (23 Nov 2026) Raw price paid, EPC and match table loaded to BigQuery. Rows counts match the pipeline. Next steps: profiling, then SQL rebuild of the pipeline's downstream steps.
+**Status (26 Nov 2026):** Raw, staging and intermediate layers built; the SQL reproduces the pandas pipeline's row counts at every step. Marts in progress: `dim_certificate` and `dim_date` done, `fact_sales` next, then Power BI.
 
 ## Why this exists
 My pandas pipeline does the rule-based address matching of Land Registry sales with EPC certificates. This repo rebuilds all the subsequent cleaning and filtering in SQL/BigQuery, ending in a star schema for Power BI to read.
 
 ## Architecture
-<!-- The flow: raw PP + raw EPC + match table → BigQuery
-→ staging → intermediate → marts → Power BI.
-A simple text diagram is fine for now. -->
+
+```text
+Price Paid CSVs ─┐
+EPC CSV ─────────┼─→ Cloud Storage ─→ raw ─→ staging ─→ intermediate ─→ marts ─→ Power BI
+Match table ─────┘   (EPC > 100 MB)    │                                  │
+(from the pandas                        └── reference (lookup tables) ─────┘
+ pipeline)
+```
+
+Address matching stays in Python. The pipeline exports the (sale, certificate)
+pairs as the match table, and everything downstream is SQL.
 
 ## Data sources
 Neither dataset is included in the repo. To reproduce the results:
