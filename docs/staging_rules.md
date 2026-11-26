@@ -19,6 +19,8 @@
             - lowercase everything
             - not recorded to NULL
             - Note: Contains differing levels of detail (Rental vs Rental (social) or Rental (private))
+        - number_heated_rooms
+            - 0 to NULL
         - built_form
             - Not Recorded to NULL
         - current_energy_rating
