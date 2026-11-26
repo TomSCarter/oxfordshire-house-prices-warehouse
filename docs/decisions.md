@@ -35,3 +35,8 @@
     - Avoids dealing with the 5 non-oxfordshire records that had to be filtered out in the pipeline
     - Will add an UNKNOWN row for all unlinked sales to point to
     - Could add the full set at a later date, if we wanted to analyse the whole housing stock (e.g. spread of ratings etc)
+
+- Add floor area as a tie break on EPC selection (after inspection and lodgement dates). The python pipeline had no tie-break, so ties were settled arbitrarily by sort order
+    - There is a sale with unique_id (49E87C32-4DD3-591C-E063-4704A8C00C31) matches to two EPCs inspected and lodged on identical days, the sale price is above £1.5 million and one EPC has 52 sqm floor area and the other 243 sqm. It seems likely one EPC is for an annex.
+    - Tie-break for larger floor_area will typically select the main house, which better reflects the sale price.
+    - NULL floor areas sorted last

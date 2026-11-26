@@ -17,7 +17,7 @@ FROM
 ranked AS(
   SELECT
     *,
-    ROW_NUMBER() OVER(PARTITION BY unique_id ORDER BY inspection_to_sale ASC, lodgement_date DESC, certificate_number) AS epc_rank
+    ROW_NUMBER() OVER(PARTITION BY unique_id ORDER BY inspection_to_sale ASC, lodgement_date DESC, total_floor_area DESC NULLS LAST, certificate_number) AS epc_rank
   FROM
     add_inspection_to_sale
   WHERE inspection_to_sale >= 0
