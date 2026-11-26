@@ -37,9 +37,9 @@ the v3 processed data (appendix below).
   counts above. `stg_epc` still contains those 5 records; filter them if
   `dim_certificate` is ever built from all certificates.
 - **Tie-break.** `int_sales_presale_epc` adds `total_floor_area` then `certificate_number` as third/fourth
-  sort keys after inspection-to-sale gap and lodgement date, so exact ties are
+  sort keys after inspection-to-sale gap and lodgement date, so exact EPC ties are
   settled the same way on every run. Floor area means main houses are more likely to be chosen over annexes. 
-  Changes one sale compared with the pipeline (the only exact tie found)
+  333 sales have two or more certificates tied on inspection-to-sale gap and lodgement date. The pipeline settled these arbitrarily. Remaining column-level null differences (tenure, floor height, heated rooms, each ±1 after rule fixes) fall within this set.
 - **Floor height imputation not reproduced.** The pipeline fills 2,516 missing
   floor heights with the median (`clean.impute_floor_height`). The warehouse
   leaves them NULL; imputation is an analysis choice, and no current output
