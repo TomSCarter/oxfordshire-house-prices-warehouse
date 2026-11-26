@@ -51,6 +51,8 @@ the v3 processed data (appendix below).
   kept as `construction_age_band_raw`, so the exclusion rule above matches the
   pipeline.
 - **Address fields dropped** from staging onwards (data minimisation).
+- **Tenure 'Unknown'** missed in pipeline (only 'unknown' caught), converted to NULL in `int_sales_presale_epc` giving an additional 174 NULL values.
+  - raw.epc joined to `int_sales_presale_epc` and grouped on tenure shows 174 'Unknown' (and 21893 'unknown'), confirming the source
 
 ## Not yet reconciled
 
