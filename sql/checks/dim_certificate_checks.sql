@@ -1,4 +1,4 @@
--- Check total rows equal to distinct certificate_numbers. 98925 = 98925: Pass
+-- Check total rows equal to distinct certificate_numbers. 98926 = 98926: Pass
 
 SELECT
   COUNT(*) AS total_rows,
@@ -6,7 +6,7 @@ SELECT
 FROM
   `marts.dim_certificate`;
 
--- Check distinct certificate_numbers in dim_certificate is equal to distinct certificate_numbers in int_sales_filtered + 1. 98925 = 98924 + 1: Pass
+-- Check distinct certificate_numbers in dim_certificate is equal to distinct certificate_numbers in int_sales_filtered + 1. 98926 = 98925 + 1: Pass
 SELECT
   'dim_certificate distinct certificate_number' AS table_name,
   COUNT(DISTINCT certificate_number) AS total_rows
