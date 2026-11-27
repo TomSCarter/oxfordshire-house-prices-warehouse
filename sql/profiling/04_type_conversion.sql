@@ -48,3 +48,26 @@ SELECT
   COUNTIF(lodgement_date IS NOT NULL AND SAFE.PARSE_DATE('%F', lodgement_date) IS NULL) AS lodgement_date_fail
 FROM
   `raw.epc`;
+
+  -- Checks missing columns. Zero failures in all four columns.
+WITH source AS(
+  SELECT *
+  FROM raw.epc
+),
+
+cleaned AS(
+  SELECT
+    NULLIF(TRIM(potential_energy_efficiency), '') AS potential_energy_efficiency,
+    NULLIF(TRIM(number_habitable_rooms), '') AS number_habitable_rooms,
+    NULLIF(TRIM(number_heated_rooms), '') AS number_heated_rooms,
+    NULLIF(TRIM(extension_count), '') AS extension_count,
+  FROM
+    source
+)
+  SELECT
+  COUNTIF(number_heated_rooms IS NOT NULL AND SAFE_CAST(number_heated_rooms AS INT64) IS NULL) AS number_heated_rooms_fail,
+  COUNTIF(number_habitable_rooms IS NOT NULL AND SAFE_CAST(number_habitable_rooms AS INT64) IS NULL) AS number_habitable_rooms_fail,
+  COUNTIF(extension_count IS NOT NULL AND SAFE_CAST(extension_count AS INT64) IS NULL) AS extension_count_fail,
+  COUNTIF(potential_energy_efficiency IS NOT NULL AND SAFE_CAST(potential_energy_efficiency AS INT64) IS NULL) AS potential_energy_efficiency_fail
+FROM
+  cleaned;
