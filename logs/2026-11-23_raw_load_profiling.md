@@ -3,7 +3,7 @@
 ## Done
 - Wrote design decisions 3–4 in `docs/decisions.md` (fact table grain, certificate dimension)
 - Created Cloud Storage bucket and uploaded the EPC CSV and the five Price Paid CSVs (all work in europe-west2)
-- Wrote `load/make_schema.py` to generate all-STRING BigQuery schemas from each CSV's header row; saved `load/schema_epc.json` and `load/schema_price_paid.json`
+- Wrote `load/make_schema.py` to generate all-STRING BigQuery schemas from each CSV's header row; saved `load/schema_epc.json` and `load/schema_pp.json`
 - Loaded three tables into the `raw` dataset:
   - `raw.price_paid`: 135,557 rows (wildcard load of all five `ppd_data*.csv` files)
   - `raw.epc`: 338,323 rows
