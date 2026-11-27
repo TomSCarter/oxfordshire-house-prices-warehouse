@@ -39,7 +39,7 @@ the v3 processed data (appendix below).
 - **Tie-break.** `int_sales_presale_epc` adds `total_floor_area` then `certificate_number` as third/fourth
   sort keys after inspection-to-sale gap and lodgement date, so exact EPC ties are
   settled the same way on every run. Floor area means main houses are more likely to be chosen over annexes. 
-  333 sales have two or more certificates tied on inspection-to-sale gap and lodgement date. The pipeline settled these arbitrarily. Remaining column-level null differences (tenure, floor height, heated rooms, each ±1 after rule fixes) fall within this set.
+  333 sales have two or more certificates tied on inspection-to-sale gap and lodgement date. The pipeline settled these arbitrarily. Remaining column-level null differences (tenure, floor height, heated rooms, each ±1 after rule fixes) fall within this set. Of the 333 tied sales, 178 have identical floor areas (likely duplicate lodgements); in the other 155, the floor-area rule decides, including ties where one certificate has no floor area.
 - **Floor height imputation not reproduced.** The pipeline fills 2,516 missing
   floor heights with the median (`clean.impute_floor_height`). The warehouse
   leaves them NULL; imputation is an analysis choice, and no current output
@@ -52,14 +52,22 @@ the v3 processed data (appendix below).
   kept as `construction_age_band_raw`, so the exclusion rule above matches the
   pipeline.
 - **Address fields dropped** from staging onwards (data minimisation).
-- **Tenure 'Unknown'** missed in pipeline (only 'unknown' caught), converted to NULL in `int_sales_presale_epc` giving an additional 174 NULL values.
+- **Tenure 'Unknown'** missed in pipeline (only 'unknown' caught), converted to NULL in `stg_epc` with `int_sales_presale_epc` giving an additional 174 NULL values.
   - raw.epc joined to `int_sales_presale_epc` and grouped on tenure shows 174 'Unknown' (and 21893 'unknown'), confirming the source
 
-## Not yet reconciled
 
-Column-level null counts after `clean.nullify_invalid_values` (pipeline: floor
-height 2,575, tenure 35,004, heated rooms 32,426, built form 2,507). To compare
-against the marts once they're built.
+## Column-level reconciliation (at `int_sales_presale_epc`, 114,490 rows)
+
+Compared against the pipeline's `clean.nullify_invalid_values` step, which ran
+before exclusions.
+
+| Column | Pipeline | SQL | Difference | Explanation |
+|---|---|---|---|---|
+| Expired certificates | 1,151 | 1,151 | 0 | ✓ (1,148 in `fact_sales`, after exclusions) |
+| Built form NULL | 2,507 | 2,507 | 0 | ✓ |
+| Heated rooms NULL | 32,426 | 32,427 | +1 | Within tied sales (0 → NULL rule added to `stg_epc`) |
+| Floor height NULL | 2,575 | 2,576 | +1 | Within tied sales |
+| Tenure NULL | 35,004 | 35,177 | +173 | +174 from 'Unknown' (see below), −1 within tied sales |
 
 ## Appendix: pipeline run report (v3)
  
@@ -91,5 +99,3 @@ against the marts once they're built.
 23        clean.impute_floor_height   114424           NaN        NaN      NaN                 NaN           NaN                        NaN               NaN         2516.0
 24                save.save_parquet   114424           NaN        NaN      NaN                 NaN           NaN                        NaN               NaN            NaN
 ```
-
-# 
