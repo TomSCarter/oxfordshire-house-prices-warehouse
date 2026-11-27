@@ -16,7 +16,7 @@ Match table ─────┘   (EPC > 100 MB)    │                          
  pipeline)
 ```
 
-Address matching stays in Python. The pipeline exports the (sale, certificate) pairs as the match table, and everything downstream is SQL.
+Address matching stays in Python. The pipeline exports the (sale, certificate) gitpairs as the match table, and everything downstream is SQL.
 
 ## Data sources
 Neither dataset is included in the repo. To reproduce the results:
@@ -68,10 +68,12 @@ All datasets are in europe-west2 (London).
 
 ## Reconciliation
 Row counts match the pandas pipeline exactly at every step:
-171,240 pairs → 164,823 (118,222 sales) → 114,490 → 114,424.
-Column-level null counts match to within ±1, explained by 333 sales with tied
-certificates, plus one deliberate fix (174 'Unknown' tenures the pipeline missed).
+- 171,240 address-matched sale-EPC pairs → 164,823 unambiguous sale-EPC pairs (covering 118,222 distinct sales) → 114,490 sales with closest pre-sale EPC → 114,424 sales after exclusions.
+- Column-level null counts match to within ±1, explained by 333 sales with tied certificates, plus one deliberate fix (174 'Unknown' tenures the pipeline missed).
+- `fact_sales` holds all 135,557 sales: 114,424 have a selected certificate, and the other 21,133 (no address match, ambiguous match, no pre-sale certificate, or excluded) link to the UNKNOWN row.
+
 Full tables and differences: [reconciliation.md](docs/reconciliation.md)
+
 
 ## Design decisions
 Full reasoning in [decisions.md](docs/decisions.md).
