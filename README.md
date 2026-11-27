@@ -51,7 +51,7 @@ oxfordshire-house-prices-warehouse/
 │   ├── marts/              # star schema tables for Power BI
 │   └── checks/             # checks per model (row counts, uniqueness, joins)
 ├── logs/                   # daily notes
-├── powerbi/                # notes and measures (.pbix ignored)
+├── powerbi/                # Power BI project (.pbip/.tmdl): model definitions and report (data cache ignored)
 └── data/                   # ignored: local raw and processed files
 ```
 
