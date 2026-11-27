@@ -22,7 +22,7 @@
 - Property key
     - No unique key for each property, but there is for each sale (unique_id)
         - It would be nice to be able to look at multiple sales/certificates for a single property, but there is not a clear way to link them (more address matching).
-            - Land registry has a new lookup for UPRNs since Aug 2026, so this will be more straightforward for recent and future sales.
+            - HM Land Registry's sale-to-UPRN lookup (from August 2026) covers only new Price Paid records, with no back-dated data, so it can't provide a property key for 2015–2025 sales. It would only help if the project is extended to sales from late 2026 onwards
         - But none of my current analysis needs this, no property key for now
     - EPC all have unique certificate numbers with UPRN for each property (but some few uprn are null)
         - dim_certificate to be keyed on certificate_number, holding the properties attributes as of each sale
