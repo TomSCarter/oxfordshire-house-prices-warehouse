@@ -20,7 +20,7 @@ table _Measures
 		annotation PBI_FormatHint = {"currencyCulture":"en-GB"}
 
 	measure 'Number of sales' = COUNTROWS(fact_sales)
-		formatString: 0
+		formatString: #,0
 		lineageTag: 31f10055-23f8-4270-9260-ba5cb0e0f2c0
 
 	partition _Measures = m
