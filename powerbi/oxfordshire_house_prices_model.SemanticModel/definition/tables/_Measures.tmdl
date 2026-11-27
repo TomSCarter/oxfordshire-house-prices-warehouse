@@ -1,0 +1,36 @@
+table _Measures
+	lineageTag: 5ac37b8c-9234-4797-9014-b279a27e883e
+
+	measure 'Median price' = MEDIAN(fact_sales[price_paid])
+		formatString: "£"#,0;-"£"#,0;"£"#,0
+		lineageTag: 9dc75a6b-84a4-44be-a352-c4718fb6a44b
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-GB"}
+
+	measure 'Median £/m²' = ```
+			
+			    MEDIANX(
+			        FILTER(fact_sales, fact_sales[has_certificate] = TRUE),
+			        DIVIDE(fact_sales[price_paid], RELATED(dim_certificate[total_floor_area]))
+			    )
+			```
+		formatString: "£"#,0;-"£"#,0;"£"#,0
+		lineageTag: 3445186b-7ecc-4394-b916-ec3ab6d43638
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-GB"}
+
+	measure 'Number of sales' = COUNTROWS(fact_sales)
+		formatString: 0
+		lineageTag: 31f10055-23f8-4270-9260-ba5cb0e0f2c0
+
+	partition _Measures = m
+		mode: import
+		source =
+				let
+				  Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Removed Columns" = Table.RemoveColumns(Source,{"Column1"})
+				in
+				  #"Removed Columns"
+
+	annotation PBI_ResultType = Table
+
