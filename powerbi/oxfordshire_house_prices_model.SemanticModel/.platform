@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "oxfordshire_house_prices_model"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "aef10e0c-f5b5-47fa-aa4b-011303a5d7cc"
+  }
+}

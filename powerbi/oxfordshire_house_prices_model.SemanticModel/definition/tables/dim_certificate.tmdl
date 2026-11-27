@@ -1,0 +1,225 @@
+table dim_certificate
+	lineageTag: f4089493-4033-4171-8b7a-530786667cc4
+
+	column certificate_number
+		dataType: string
+		lineageTag: d5da84df-687e-44d5-b007-89c589912a6a
+		summarizeBy: none
+		sourceColumn: certificate_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column inspection_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: a55111ab-b280-4c49-97fa-d2d6e567e1f6
+		summarizeBy: none
+		sourceColumn: inspection_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column lodgement_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 4ca15db8-e0c7-42b4-96cf-301cbf247a3b
+		summarizeBy: none
+		sourceColumn: lodgement_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column total_floor_area
+		dataType: int64
+		formatString: 0
+		lineageTag: 8fdf125b-4555-41b5-a7fd-69b2d751faa8
+		summarizeBy: sum
+		sourceColumn: total_floor_area
+
+		annotation SummarizationSetBy = User
+
+	column floor_height
+		dataType: double
+		lineageTag: 13c6e7a0-60e0-4448-908b-4d0365fc3963
+		summarizeBy: average
+		sourceColumn: floor_height
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column current_energy_rating
+		dataType: string
+		lineageTag: 9bed0ade-3b30-4a0a-aa56-c16da54d3a89
+		summarizeBy: none
+		sourceColumn: current_energy_rating
+
+		annotation SummarizationSetBy = Automatic
+
+	column current_energy_efficiency
+		dataType: int64
+		formatString: 0
+		lineageTag: 2151ed97-bfab-415e-b25b-3e7b86dd6963
+		summarizeBy: average
+		sourceColumn: current_energy_efficiency
+
+		annotation SummarizationSetBy = User
+
+	column energy_consumption_current
+		dataType: double
+		lineageTag: baff69ec-2da3-44d2-93aa-d512fea3356e
+		summarizeBy: average
+		sourceColumn: energy_consumption_current
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column heating_cost_current
+		dataType: double
+		lineageTag: 344a77f1-43cb-4bf8-8e2c-eb5aa14eeb6c
+		summarizeBy: average
+		sourceColumn: heating_cost_current
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column potential_energy_efficiency
+		dataType: int64
+		formatString: 0
+		lineageTag: da7212e3-bd4e-4209-918d-73867a8e2f33
+		summarizeBy: average
+		sourceColumn: potential_energy_efficiency
+
+		annotation SummarizationSetBy = User
+
+	column number_habitable_rooms
+		dataType: int64
+		formatString: 0
+		lineageTag: 72af1490-a584-4165-b109-e854f659b472
+		summarizeBy: average
+		sourceColumn: number_habitable_rooms
+
+		annotation SummarizationSetBy = User
+
+	column number_heated_rooms
+		dataType: int64
+		formatString: 0
+		lineageTag: 94809a83-a468-4e26-b19b-aacdadf7c456
+		summarizeBy: average
+		sourceColumn: number_heated_rooms
+
+		annotation SummarizationSetBy = User
+
+	column extension_count
+		dataType: int64
+		formatString: 0
+		lineageTag: 9f1745d6-3989-4080-90e9-5ead1fa151ef
+		summarizeBy: none
+		sourceColumn: extension_count
+
+		annotation SummarizationSetBy = User
+
+	column built_form
+		dataType: string
+		lineageTag: 51227053-e5f4-44cf-9a19-f47ebf79b809
+		summarizeBy: none
+		sourceColumn: built_form
+
+		annotation SummarizationSetBy = Automatic
+
+	column construction_age_band
+		dataType: string
+		lineageTag: 417fd2c4-5182-45d9-8f57-b43f8ee57fef
+		summarizeBy: none
+		sourceColumn: construction_age_band
+		sortByColumn: construction_age_band_sort_order
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column construction_age_band_sort_order
+		dataType: int64
+		formatString: 0
+		lineageTag: 1b72b494-3d31-40e3-8bc4-03fd8d0dfd46
+		summarizeBy: none
+		sourceColumn: construction_age_band_sort_order
+
+		annotation SummarizationSetBy = User
+
+	column build_year
+		dataType: int64
+		formatString: 0
+		lineageTag: 83c541f9-8eab-45c3-81a4-fb0829b3cfaf
+		summarizeBy: none
+		sourceColumn: build_year
+
+		annotation SummarizationSetBy = User
+
+	column transaction_type
+		dataType: string
+		lineageTag: 3027c636-fb15-4e76-a6b6-f76549a770e8
+		summarizeBy: none
+		sourceColumn: transaction_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column uprn
+		dataType: string
+		lineageTag: 25e1a33c-5a5f-42c3-9ac3-0764f960dc37
+		summarizeBy: none
+		sourceColumn: uprn
+
+		annotation SummarizationSetBy = Automatic
+
+	column property_type
+		dataType: string
+		lineageTag: 09f2d6ab-5315-4381-ac7b-8437a242503a
+		summarizeBy: none
+		sourceColumn: property_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column tenure
+		dataType: string
+		lineageTag: 731724df-e4e9-4c8d-a81b-c3f48365bce4
+		summarizeBy: none
+		sourceColumn: tenure
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_suspect_inspection_date
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 791fadc3-d35c-4023-b20e-c8b746f0c877
+		summarizeBy: none
+		sourceColumn: is_suspect_inspection_date
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_suspect_floor_height
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: cc604db0-2cff-4ba1-bd13-885f0d390f89
+		summarizeBy: none
+		sourceColumn: is_suspect_floor_height
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_certificate = m
+		mode: import
+		source =
+				let
+				  Source = GoogleBigQuery.Database([BillingProject = null, UseStorageApi = null, ConnectionTimeout = null, CommandTimeout = null]),
+				  #"Navigation 1" = Source{[Name = "project-d5eae18f-06e2-4add-bb2"]}[Data],
+				  #"Navigation 2" = #"Navigation 1"{[Name = "marts", Kind = "Schema"]}[Data],
+				  #"Navigation 3" = #"Navigation 2"{[Name = "dim_certificate", Kind = "Table"]}[Data]
+				in
+				  #"Navigation 3"
+
+	annotation PBI_ResultType = Table
+

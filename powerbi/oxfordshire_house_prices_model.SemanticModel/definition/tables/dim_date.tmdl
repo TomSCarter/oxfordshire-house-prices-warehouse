@@ -1,0 +1,113 @@
+table dim_date
+	lineageTag: 18553c59-e2b7-435d-afc2-da5c2d59cc51
+	dataCategory: Time
+
+	column date
+		dataType: dateTime
+		isKey
+		formatString: Long Date
+		lineageTag: cc788d3e-7960-427b-8ca6-a0602dadc3c8
+		summarizeBy: none
+		sourceColumn: date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column year
+		dataType: int64
+		formatString: 0
+		lineageTag: 52bdfbc6-8272-4493-8c3f-60662d29ff84
+		summarizeBy: none
+		sourceColumn: year
+
+		annotation SummarizationSetBy = User
+
+	column quarter
+		dataType: int64
+		formatString: 0
+		lineageTag: 9068d4f7-99d9-4f4b-8692-c823e072873b
+		summarizeBy: none
+		sourceColumn: quarter
+
+		annotation SummarizationSetBy = User
+
+	column month
+		dataType: int64
+		formatString: 0
+		lineageTag: 40314f12-3951-420d-a325-e6aac3343e41
+		summarizeBy: none
+		sourceColumn: month
+
+		annotation SummarizationSetBy = User
+
+	column day
+		dataType: int64
+		formatString: 0
+		lineageTag: 635c43b9-40c1-405a-a5b7-34b881a391cf
+		summarizeBy: none
+		sourceColumn: day
+
+		annotation SummarizationSetBy = User
+
+	column day_name
+		dataType: string
+		lineageTag: dc50b5d5-df5a-45d6-8c80-526633dd57ec
+		summarizeBy: none
+		sourceColumn: day_name
+		sortByColumn: dayofweek_number
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column dayofweek_number
+		dataType: int64
+		formatString: 0
+		lineageTag: 40c3444f-c4fe-4ffe-836f-cfd2daff7b74
+		summarizeBy: none
+		sourceColumn: dayofweek_number
+
+		annotation SummarizationSetBy = User
+
+	column month_name
+		dataType: string
+		lineageTag: 222fc69e-b1e0-4eb2-872e-eb8ab8b1a08a
+		summarizeBy: none
+		sourceColumn: month_name
+		sortByColumn: month
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column year_month
+		dataType: string
+		lineageTag: fff5b746-ee99-4764-ad45-b49ca19dcbf6
+		summarizeBy: none
+		sourceColumn: year_month
+
+		annotation SummarizationSetBy = Automatic
+
+	column weekend_flag
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 258b764b-29cb-4384-bc2e-e5ab3ea7a09e
+		summarizeBy: none
+		sourceColumn: weekend_flag
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_date = m
+		mode: import
+		source =
+				let
+				  Source = GoogleBigQuery.Database([BillingProject = null, UseStorageApi = null, ConnectionTimeout = null, CommandTimeout = null]),
+				  #"Navigation 1" = Source{[Name = "project-d5eae18f-06e2-4add-bb2"]}[Data],
+				  #"Navigation 2" = #"Navigation 1"{[Name = "marts", Kind = "Schema"]}[Data],
+				  #"Navigation 3" = #"Navigation 2"{[Name = "dim_date", Kind = "Table"]}[Data]
+				in
+				  #"Navigation 3"
+
+	annotation PBI_ResultType = Table
+

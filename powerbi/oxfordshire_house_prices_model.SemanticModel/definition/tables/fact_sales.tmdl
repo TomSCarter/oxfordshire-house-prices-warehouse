@@ -1,0 +1,152 @@
+table fact_sales
+	lineageTag: 1542dd8a-e05c-4dd2-86e0-2702e7b56afe
+
+	column unique_id
+		dataType: string
+		lineageTag: d5445cf5-ae3e-4a6a-b4f0-3d7789bbba5d
+		summarizeBy: none
+		sourceColumn: unique_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column deed_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 8859e5e7-263a-494c-8343-f4198cca7aef
+		summarizeBy: none
+		sourceColumn: deed_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column certificate_number
+		dataType: string
+		lineageTag: 531bf4dc-377a-4040-b9ed-d336b556b803
+		summarizeBy: none
+		sourceColumn: certificate_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column price_paid
+		dataType: int64
+		formatString: 0
+		lineageTag: 0ca1b08e-2e70-45a8-9819-a4d036435e30
+		summarizeBy: sum
+		sourceColumn: price_paid
+
+		annotation SummarizationSetBy = Automatic
+
+	column postcode
+		dataType: string
+		lineageTag: 5df82b69-6131-4807-8e31-2782bd8623da
+		summarizeBy: none
+		sourceColumn: postcode
+
+		annotation SummarizationSetBy = Automatic
+
+	column district
+		dataType: string
+		lineageTag: 36d7e365-a5a6-4e7c-8fea-706a16c02731
+		summarizeBy: none
+		sourceColumn: district
+
+		annotation SummarizationSetBy = Automatic
+
+	column county
+		dataType: string
+		lineageTag: 7ef206d0-265a-4d0a-bf5b-487b8abc8353
+		summarizeBy: none
+		sourceColumn: county
+
+		annotation SummarizationSetBy = Automatic
+
+	column town
+		dataType: string
+		lineageTag: f77d028e-ce21-4f83-a956-c674a76c31aa
+		summarizeBy: none
+		sourceColumn: town
+
+		annotation SummarizationSetBy = Automatic
+
+	column property_type
+		dataType: string
+		lineageTag: 32c56f3a-2d2f-438f-88bc-79bad699fdc4
+		summarizeBy: none
+		sourceColumn: property_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_new_build
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 91100ecf-69da-4746-972d-31db6e9744f5
+		summarizeBy: none
+		sourceColumn: is_new_build
+
+		annotation SummarizationSetBy = Automatic
+
+	column estate_type
+		dataType: string
+		lineageTag: 05f8a0e9-2a9c-4847-a686-262d911226e1
+		summarizeBy: none
+		sourceColumn: estate_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column transaction_category
+		dataType: string
+		lineageTag: 09a3a7df-8068-48e7-9b47-c8e5a29f83bc
+		summarizeBy: none
+		sourceColumn: transaction_category
+
+		annotation SummarizationSetBy = Automatic
+
+	column has_certificate
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: d24747e3-9963-4c12-a2c7-1e3dc9dfc5ae
+		summarizeBy: none
+		sourceColumn: has_certificate
+
+		annotation SummarizationSetBy = Automatic
+
+	column inspection_to_sale_days
+		dataType: int64
+		formatString: 0
+		lineageTag: cf98c360-b725-4dc8-a9c1-5f55cf09f9a4
+		summarizeBy: sum
+		sourceColumn: inspection_to_sale_days
+
+		annotation SummarizationSetBy = Automatic
+
+	column epc_age_band
+		dataType: string
+		lineageTag: afaafedc-4be4-475c-8d2b-39cb0ecf9f22
+		summarizeBy: none
+		sourceColumn: epc_age_band
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_epc_expired
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 39337982-bbbc-4c07-bc64-4fe94385138e
+		summarizeBy: none
+		sourceColumn: is_epc_expired
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fact_sales = m
+		mode: import
+		source =
+				let
+				  Source = GoogleBigQuery.Database([BillingProject = null, UseStorageApi = null, ConnectionTimeout = null, CommandTimeout = null]),
+				  #"Navigation 1" = Source{[Name = "project-d5eae18f-06e2-4add-bb2"]}[Data],
+				  #"Navigation 2" = #"Navigation 1"{[Name = "marts", Kind = "Schema"]}[Data],
+				  #"Navigation 3" = #"Navigation 2"{[Name = "fact_sales", Kind = "Table"]}[Data]
+				in
+				  #"Navigation 3"
+
+	annotation PBI_ResultType = Table
+

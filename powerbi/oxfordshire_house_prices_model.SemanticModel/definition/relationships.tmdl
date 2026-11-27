@@ -1,0 +1,8 @@
+relationship AutoDetected_2bf41cc1-981c-40c2-9e5a-73d9170f4d92
+	fromColumn: fact_sales.certificate_number
+	toColumn: dim_certificate.certificate_number
+
+relationship e30b7acc-d801-9eca-d5c7-18bee766cb5d
+	fromColumn: fact_sales.deed_date
+	toColumn: dim_date.date
+
